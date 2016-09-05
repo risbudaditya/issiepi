@@ -10,7 +10,7 @@ GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
 GPIO.setup(tilt,GPIO.IN)
 serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-serversocket.bind(socket.gethostname(),port)
+serversocket.bind((socket.gethostname(),port))
 serversocket.listen()
 
 connections = {}
@@ -22,7 +22,7 @@ class socketlistener:
 		thread.daemon=True
 		thread.start()
 	def run(self):
-		while True
+		while True:
 			(clientsocket, address) = serversocket.accept()
 			connections.update( {clientsocket : address} )
 			time.sleep(self.interval)
